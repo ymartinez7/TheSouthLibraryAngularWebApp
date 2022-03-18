@@ -1,0 +1,31 @@
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="60%">
+    <input
+      matInput
+      type="text"
+      (keyup)="hacerFiltro($any($event.target).value)"
+      placeholder="Ingrese texto busqueda"
+    />
+  </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="nombre">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.nombre }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="apellido">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{ element.apellido }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="desplegarcolumnas"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: desplegarcolumnas"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></mat-paginator>
+
+<button mat-fab id="boton-agregar" color="warn" (click)="abrirDialogo()">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,10 @@
+<h1>hola usuario bienvenido a nuestro primer componente angular</h1>
+<br>
+{{usuarioNombre}}
+<br>
+<br>
+<input *ngIf="visible" type="text" [(ngModel)]="usuarioNombre"/>
+<button *ngIf="visible" (click)="onAgregarUusario()">Agregar</button>
+<div *ngFor="let usuario of usuarios">{{usuario}} </div>
+<br>
+<br>

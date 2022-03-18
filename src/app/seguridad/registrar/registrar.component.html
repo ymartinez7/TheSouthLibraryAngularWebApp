@@ -1,0 +1,84 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="registrarUsuario(f)"
+    fxLayoutGap="10px "
+  >
+    <mat-form-field>
+      <mat-label>Ingrese nombre</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="nombre"
+        required
+        placeholder="Ingrese nombre"
+        matInput
+      />
+      <mat-error>Debe ingresra un nombre</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese apellidos</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="apellidos"
+        required
+        placeholder="Ingrese apellidos"
+        matInput
+      />
+      <mat-error>Debe ingresar los apellidos</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese username</mat-label>
+      <input
+        type="text"
+        ngModel
+        name="username"
+        required
+        placeholder="ymartinez7"
+        matInput
+      />
+      <mat-error>Debe ingresar nombre de usuario</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese e-mail</mat-label>
+      <input
+        type="email"
+        ngModel
+        matInput
+        placeholder="ejemplo@gmail.com"
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >El email no puede estart en blanco</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >El correo es invalido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field hintLabel="El password debe tener 7 caracteres">
+      <mat-label>Ingrese password</mat-label>
+      <input
+        type="password"
+        ngModel
+        matInput
+        placeholder="Ingrese la contraseña"
+        name="password"
+        required
+        minlength="7"
+      />
+      <mat-error>El password debe tener más de 7 caracteres</mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Guardar</button>
+  </form>
+</section>
